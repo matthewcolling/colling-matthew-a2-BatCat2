@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>.net10.0</TargetFramework>
-    <RootNamespace>GAME_10033_Game_Development_Foundations___2D_Game_Template__v1._6_1</RootNamespace>
+    <RootNamespace>_2D_Template</RootNamespace>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
