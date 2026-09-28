@@ -26,6 +26,24 @@ namespace MohawkGame2D
         public void Update()
         {
             Window.ClearBackground (0, 0, 0);
+            // Mouse Click interaction to toggle Blood Thirsty state
+            //Hitbox around the mouth area to toggle the Blood Thirsty state
+            Vector2 mousePos = Input.GetMousePosition();
+            if (Input.IsMouseButtonPressed(MouseButton.Left) && mousePos.X >= 170 && mousePos.X <= 230 && mousePos.Y >= 235 && mousePos.Y <= 285 && isBloodThirsty == false)
+            {
+
+                isBloodThirsty = true;// Toggle the state
+
+            }
+            else if (Input.IsMouseButtonPressed(MouseButton.Left) && mousePos.X >= 170 && mousePos.X <= 230 && mousePos.Y >= 235 && mousePos.Y <= 285 && isBloodThirsty == true)
+            {
+
+
+
+                isBloodThirsty = false;// Toggle the state
+
+
+            }
 
             //---Draw Head and Ears (Black Bat-Cat Shape)---
             //Head fill and outline
@@ -53,7 +71,7 @@ namespace MohawkGame2D
             Draw.Line(300, 145, 300, 120);  // Right Upper Cheek
 
             //---Draw Eyes (Red Eyes)---
-            if (isBloodThirsty)
+            if (isBloodThirsty == true)
             {
                 Draw.SetFillColor(255, 0, 0); // Red Eyes when Blood Thirsty
                 Draw.SetLineColor(255, 0, 0);
@@ -80,7 +98,7 @@ namespace MohawkGame2D
             Draw.SetLineColor(255, 255, 255);
             Draw.SetLineSize(3);
 
-            if (isBloodThirsty)
+            if (isBloodThirsty == true)
             {
                 // Blood Drops
                 Draw.SetLineColor(255, 0, 0);
@@ -108,17 +126,7 @@ namespace MohawkGame2D
                 Draw.Line(140, 175, 180, 175);
                 Draw.Line(220, 175, 260, 175);
 
-                // Mouse Click interaction to toggle Blood Thirsty state
-                if (Input.IsMouseButtonPressed(MouseButton.Left))
-                {
-                    Vector2 mousePos = Input.GetMousePosition();
-
-                    //Hitbox around the mouth area to toggle the Blood Thirsty state
-                    if (mousePos.X >= 170 && mousePos.X <= 230 && mousePos.Y >= 235 && mousePos.Y <= 285)
-                    {
-                        isBloodThirsty = !isBloodThirsty; // Toggle the state
-                    }   
-                }
+               
             }
         }
     }
