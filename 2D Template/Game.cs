@@ -91,7 +91,7 @@ namespace MohawkGame2D
             }
             else if (isAngry == true)
             {
-                Draw.SetFillColor(255, 255, 0); // White Eyes when Angry
+                Draw.SetFillColor(255, 255, 0); // Yellow Eyes when Angry
                 Draw.SetLineColor(255, 255, 255);
 
                 Draw.Triangle(140, 165, 180, 180, 140, 195); // Left Eye Fill
@@ -99,7 +99,7 @@ namespace MohawkGame2D
             }
             else
             {
-                Draw.SetFillColor(255, 255, 255); // White Eyes when Normal
+                Draw.SetFillColor(255, 255, 255); // White Eyes when Sleepy
                 Draw.SetLineSize(3);
                 Draw.Line(140, 175, 180, 175);
                 Draw.Line(220, 175, 260, 175);
