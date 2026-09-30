@@ -11,6 +11,7 @@ namespace MohawkGame2D
     public class Game
     {
         private bool isBloodThirsty = false;
+        private bool isAngry = false;
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
@@ -29,10 +30,13 @@ namespace MohawkGame2D
             // Mouse Click interaction to toggle Blood Thirsty state
             //Hitbox around the mouth area to toggle the Blood Thirsty state
             Vector2 mousePos = Input.GetMousePosition();
-            if (Input.IsMouseButtonPressed(MouseButton.Left) && mousePos.X >= 170 && mousePos.X <= 230 && mousePos.Y >= 235 && mousePos.Y <= 285 && isBloodThirsty == false)
+            if (Input.IsMouseButtonPressed(MouseButton.Left) && mousePos.X >= 170 && mousePos.X <= 230 && mousePos.Y >= 235 && mousePos.Y <= 285 && isBloodThirsty == false && isAngry == false)
             {
 
-                isBloodThirsty = true;// Toggle the state
+              if (isBloodThirsty == false && isAngry == false)
+                {
+                    isBloodThirsty = true; // Toggle the state
+                }   
 
             }
             else if (Input.IsMouseButtonPressed(MouseButton.Left) && mousePos.X >= 170 && mousePos.X <= 230 && mousePos.Y >= 235 && mousePos.Y <= 285 && isBloodThirsty == true)
@@ -41,9 +45,15 @@ namespace MohawkGame2D
 
 
                 isBloodThirsty = false;// Toggle the state
+                isAngry = true; // Set Angry state to true
 
 
             }
+            else if (Input.IsMouseButtonPressed(MouseButton.Left) && mousePos.X >= 170 && mousePos.X <= 230 && mousePos.Y >= 235 && mousePos.Y <= 285 && isAngry == true)
+            {
+                isAngry = false; // Reset Angry state to false
+            }  
+        
 
             //---Draw Head and Ears (Black Bat-Cat Shape)---
             //Head fill and outline
@@ -74,25 +84,29 @@ namespace MohawkGame2D
             if (isBloodThirsty == true)
             {
                 Draw.SetFillColor(255, 0, 0); // Red Eyes when Blood Thirsty
-                Draw.SetLineColor(255, 0, 0);
+                Draw.SetLineColor(255, 255, 255);
+
+                Draw.Triangle(140, 165, 180, 180, 140, 195); // Left Eye Fill
+                Draw.Triangle(260, 165, 220, 180, 260, 195); // Right Eye Fill
+            }
+            else if (isAngry == true)
+            {
+                Draw.SetFillColor(255, 255, 0); // White Eyes when Angry
+                Draw.SetLineColor(255, 255, 255);
+
+                Draw.Triangle(140, 165, 180, 180, 140, 195); // Left Eye Fill
+                Draw.Triangle(260, 165, 220, 180, 260, 195); // Right Eye Fill
             }
             else
             {
-                Draw.SetFillColor(255, 255, 255); // White Eyes when Angry
-                Draw.SetLineColor(0, 0, 0);
+                Draw.SetFillColor(255, 255, 255); // White Eyes when Normal
+                Draw.SetLineSize(3);
+                Draw.Line(140, 175, 180, 175);
+                Draw.Line(220, 175, 260, 175);
             }
-           
-            Draw.SetLineSize(5);
-            
-            //Left Eye
-            Draw.Line(140, 160, 180, 180);
-            Draw.Line(180, 180, 140, 195);
-            Draw.Line(140, 195, 140, 160);
 
-            //Right Eye
-            Draw.Line(260, 160, 220, 180);
-            Draw.Line(220, 180, 260, 195);
-            Draw.Line(260, 195, 260, 160);
+            Draw.SetLineSize(5);
+           
 
             // Mouth and Fangs
             Draw.SetLineColor(255, 255, 255);
@@ -120,11 +134,6 @@ namespace MohawkGame2D
 
                 Draw.Line(208, 250, 212, 260);
                 Draw.Line(212, 260, 215, 250);
-
-                // Sleepy Eyes
-                Draw.SetLineColor(255, 255, 255);
-                Draw.Line(140, 175, 180, 175);
-                Draw.Line(220, 175, 260, 175);
 
                
             }
