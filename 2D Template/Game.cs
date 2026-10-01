@@ -84,7 +84,8 @@ namespace MohawkGame2D
             if (isBloodThirsty == true)
             {
                 Draw.SetFillColor(255, 0, 0); // Red Eyes when Blood Thirsty
-                Draw.SetLineColor(255, 255, 255);
+                Draw.SetLineSize(2);
+                Draw.SetLineColor(161, 22, 22);
 
                 Draw.Triangle(140, 165, 180, 180, 140, 195); // Left Eye Fill
                 Draw.Triangle(260, 165, 220, 180, 260, 195); // Right Eye Fill
